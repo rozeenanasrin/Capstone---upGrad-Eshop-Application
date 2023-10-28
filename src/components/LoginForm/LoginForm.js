@@ -29,10 +29,12 @@ const LoginForm = () => {
           localStorage.setItem('accessToken', accessToken);
         } else {
           // Login failed, handle the error, e.g., show an error message
+          setError('Login failed. Please check your credentials.');
         }
       })
       .catch((error) => {
         // Handle network or request error, e.g., show an error message
+        setError('An error occurred. Please try again later.');
       });
   };
   };
