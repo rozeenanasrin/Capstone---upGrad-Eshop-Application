@@ -1,4 +1,4 @@
-// ProductsPage.js
+
 import React, { useState, useEffect } from 'react';
 import { Card, ToggleButton, ToggleButtonGroup } from '@material-ui/core';
 import './ProductsPage.css';
@@ -17,9 +17,10 @@ const ProductsPage = () => {
       })
       .catch((error) => {
         // Handle the error
+        console.error('Error fetching product categories:', error);
       });
 
-    // Fetch and display products based on the selected sorting option
+
     const productsEndpoint = `/products?sort=${sortingOption}`;
     fetch(`http://localhost:3000/api${productsEndpoint}`)
       .then((response) => response.json())
@@ -28,6 +29,7 @@ const ProductsPage = () => {
       })
       .catch((error) => {
         // Handle the error
+        console.error('Error fetching products:', error);
       });
   }, [sortingOption]);
 
