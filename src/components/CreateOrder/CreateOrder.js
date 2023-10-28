@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
 import './CreateOrder.css'; 
 
-const steps = ['Step 1', 'Step 2', 'Step 3']; // Define the steps of the order creation process
+const steps = ['Step 1', 'Step 2', 'Step 3']; 
 
 const CreateOrder = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -32,12 +32,15 @@ const CreateOrder = () => {
 
       {activeStep === steps.length ? (
         <div>
-          <p>{confirmationMessage}</p>
+          <p className="confirmation-message">{confirmationMessage}</p>
         </div>
       ) : (
         <div>
           <div>
             {/* Content for the current step */}
+             {activeStep === 0 && <p>Step 1 content goes here.</p>}
+            {activeStep === 1 && <p>Step 2 content goes here.</p>}
+            {activeStep === 2 && <p>Step 3 content goes here.</p>}
           </div>
 
           <div className="button-container">
