@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, IconButton, Button, InputBase } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
+import './Navbar.css'; 
 
 const Navbar = ({ user, isAdmin, onLogout }) => {
   return (
