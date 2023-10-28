@@ -1,28 +1,46 @@
+// Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css'; 
+import { AppBar, Toolbar, Typography, IconButton, Button, InputBase } from '@material-ui/core';
+import { ShoppingCart } from '@material-ui/icons';
 
-const NavigationBar = ({ isLoggedIn, isAdmin, handleLogout }) => {
+const Navbar = ({ user, isAdmin, onLogout }) => {
   return (
-    <div className="navbar">
-      <Link to="/">
-        Eshop
-      </Link>
-      {isLoggedIn ? (
-        <div>
-          <input type="text" placeholder="Search..." />
-          <Link to="/">Home</Link>
-          <button onClick={handleLogout}>Log Out</button>
-          {isAdmin && <Link to="/add-products">Add Products</Link>}
-        </div>
-      ) : (
-        <div>
-          <Link to="/login">Log In</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </div>
+    <AppBar position="static">
+      <Toolbar>
+        <Link to="/">
+          <IconButton color="inherit">
+            <ShoppingCart />
+          </IconButton>
+        </Link>
+        {!user ? (
+          <div>
+            <Link to="/login">
+              <Button color="inherit">Log In</Button>
+            </Link>
+            <Link to="/signup">
+              <Button color="inherit">Sign Up</Button>
+            </Link>
+          </div>
+        ) : (
+          <div>
+            <InputBase placeholder="Search..." />
+            <Link to="/">
+              <Button color="inherit">Home</Button>
+            </Link>
+            <Button color="inherit" onClick={onLogout}>
+              Log Out
+            </Button>
+            {isAdmin && (
+              <Link to="/add-products">
+                <Button color="inherit">Add Products</Button>
+              </Link>
+            )}
+          </div>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 };
 
-export default NavigationBar;
+export default Navbar;
