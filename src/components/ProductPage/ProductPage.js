@@ -34,18 +34,29 @@ const ProductsPage = () => {
   }, [sortingOption]);
 
   return (
-    <div>
-      {/* Category tabs */}
-      <ToggleButtonGroup value={sortingOption} exclusive onChange={(event, newValue) => setSortingOption(newValue)}>
-        {/* Map categories to ToggleButton components */}
-      </ToggleButtonGroup>
+    <div className="product-page">
+      <div className="category-tabs">
+        <ToggleButtonGroup value={sortingOption} exclusive onChange={(event, newValue) => setSortingOption(newValue)}>
+          {categories.map((category) => (
+            <ToggleButton className="category-button" key={category.id} value={category.id}>
+              {category.name}
+            </ToggleButton>
+          ))}
+        </ToggleButtonGroup>
+      </div>
 
-      {/* Product list */}
+<div className="product-list">
       {products.map((product) => (
-        <Card key={product.id}>
+        <Card className="product-card" key={product.id}>
           {/* Display product details */}
+          <h3>{product.name}</h3>
+          <p>Price: ${product.price}</p>
+          {/* Add more product details as needed */}
+          <Button variant="contained" color="primary">
+            Add to Cart
+          </Button>
         </Card>
-      )}
+      ))}
     </div>
   );
 };
