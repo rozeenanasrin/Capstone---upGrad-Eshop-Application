@@ -38,7 +38,7 @@ const AdminDashboard = () => {
     setProducts(updatedProducts);
   };
 
-  // Add more functions for editing and adding products
+  
 
   return (
     <div className="admin-dashboard">
@@ -52,11 +52,10 @@ const AdminDashboard = () => {
           <IconButton onClick={() => handleEditIconClick(product)}>
             <EditIcon />
           </IconButton>
-          {/* Display product details and other information as needed */}
         </Card>
       ))}
 
-      {/* Delete Confirmation Dialog */}
+      
       <Dialog open={isDeleteDialogOpen}>
         <div className="delete-dialog">
           <p>Confirm deletion of {selectedProduct ? selectedProduct.name : ''}?</p>
@@ -65,7 +64,7 @@ const AdminDashboard = () => {
         </div>
       </Dialog>
 
-      {/* Success Message */}
+      
       {successMessage && <p className="success-message">{successMessage}</p>}
     </div>
   );
