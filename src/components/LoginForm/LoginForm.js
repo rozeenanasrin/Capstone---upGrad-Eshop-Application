@@ -22,19 +22,19 @@ const LoginForm = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Handle the login response in this block
+        
         if (data.accessToken) {
-          // Login successful, save the access token and perform any necessary actions
+          
           const accessToken = data.accessToken;
-          // For example, you can save the token to local storage or state
+          
           localStorage.setItem('accessToken', accessToken);
         } else {
-          // Login failed, handle the error, e.g., show an error message
+          
           setError('Login failed. Please check your credentials.');
         }
       })
       .catch((error) => {
-        // Handle network or request error, e.g., show an error message
+        
         setError('An error occurred. Please try again later.');
       });
   };
